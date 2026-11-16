@@ -1,1 +1,5 @@
-# Early Prototypes\n\nThis folder contains the initial text-level and synthetic entropy prototypes (V1-V3). They are kept for historical reference. The current working version is \vector_stabilizer.py` in the root directory
+# Early Prototypes
+
+This folder contains the initial text-level and synthetic entropy prototypes (V1-V3). They are kept for historical reference.
+
+The current working version is `vector_stabilizer.py` in the root directory.
