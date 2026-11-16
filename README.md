@@ -8,7 +8,11 @@ This directory contains the working codebase for the Semantic Drift stabilizatio
 
 ## Outputs
 
-The `SCHEMES/` folder contains the generated plots. `Snapshot_1.png` demonstrates the semantic stabilization on a real, emotionally charged dialogue (vector space).
+The `SCHEMES/` folder contains the generated plots. Here is the visual validation:
+
+![Semantic Drift Stabilization](Snapshot_1.png)
+
+`Snapshot_1.png` demonstrates the semantic stabilization on a real, emotionally charged dialogue (vector space).
 
 ## Origin
 
