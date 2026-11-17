@@ -9,7 +9,8 @@ This directory contains the working codebase for the Semantic Drift stabilizatio
 
 ## Outputs
 
-* **`SCHEMES/Snapshot_1.png`** — Visual validation of semantic stabilization on a real, emotionally charged dialogue (vector space).
+* **SCHEMES/Snapshot_1.png** — Visual validation of semantic stabilization on a real, emotionally charged dialogue (vector space).
+* ![Semantic Drift Stabilization](Snapshot_1.png)
 * **`REJECTED_BUT_ACTIVE/`** — This folder contains samples of detected semantic anomalies. The files show the exact moment of a semantic jump (Distance metric) and the text before/after the shift.
 
 ## Origin
