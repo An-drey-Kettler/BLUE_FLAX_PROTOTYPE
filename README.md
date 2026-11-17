@@ -19,12 +19,14 @@ This directory contains the working codebase for the Semantic Drift stabilizatio
 
 * ## Quick Start
 
+To initialize the local vector-space environment and execute the primary stabilization analyzer, clone the archive and install the required dependencies:
+
+```bash
 git clone https://github.com
 cd BLUE_FLAX_PROTOTYPE
 pip install -r requirements.txt
 python vector_stabilizer_v3.py
-(Note: ensure test_text.txt is in the same directory).
-
+```
 ## Origin
 
 This prototype is based on the conceptual architecture developed in the "SR-NESS-STABILIZER-2026" framework and the "PHASE_LOCK_ARGO" materials. It represents an independent, working implementation of those ideas, designed to operate purely on local hardware (no cloud dependencies).
