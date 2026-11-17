@@ -17,6 +17,14 @@ This directory contains the working codebase for the Semantic Drift stabilizatio
 * **`REJECTED_BUT_ACTIVE/`** — This folder contains samples of raw semantic anomalies (moments where the distance exceeded the threshold).
 * **`PHASE_EVENTS/`** — This folder contains classified phase events exported by v3. It distinguishes between `RESONANT_LEAP` (a deep semantic shift within the context) and `AXIS_DRIFT` (a breakdown or loss of context).
 
+* ## Quick Start
+
+git clone https://github.com
+cd BLUE_FLAX_PROTOTYPE
+pip install -r requirements.txt
+python vector_stabilizer_v3.py
+(Note: ensure test_text.txt is in the same directory).
+
 ## Origin
 
 This prototype is based on the conceptual architecture developed in the "SR-NESS-STABILIZER-2026" framework and the "PHASE_LOCK_ARGO" materials. It represents an independent, working implementation of those ideas, designed to operate purely on local hardware (no cloud dependencies).
