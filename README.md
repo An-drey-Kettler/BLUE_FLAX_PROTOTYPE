@@ -22,7 +22,7 @@ This directory contains the working codebase for the Semantic Drift stabilizatio
 To initialize the local vector-space environment and execute the primary stabilization analyzer, clone the archive and install the required dependencies:
 
 ```bash
-git clone https://github.com
+git clone https://github.com/An-drey-Kettler/BLUE_FLAX_PROTOTYPE.git
 cd BLUE_FLAX_PROTOTYPE
 pip install -r requirements.txt
 python vector_stabilizer_v3.py
