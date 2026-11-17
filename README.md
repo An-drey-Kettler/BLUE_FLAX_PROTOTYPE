@@ -1,18 +1,16 @@
 # PROJECT_BLUE_FLAX: PROTOTYPE ARCHIVE
 
-This directory contains the working codebase for the Semantic Drift stabilization prototype. The goal of this project is to implement empirical tools for detecting and stabilizing meaning shifts in LLM interactions.
+This directory contains the working codebase for the Semantic Drift stabilization and anomaly detection prototypes. The goal of this project is to implement empirical tools for detecting, stabilizing, and cataloging meaning shifts in LLM interactions.
 
 ## Modules
 
 * **`vector_stabilizer.py`** — The core empirical analyzer. It reads a text file, converts chunks into 384-dimensional vector embeddings (via `sentence-transformers`), calculates semantic entropy (cosine distance between vectors), and applies a stabilization filter (EMA + Tanh-saturation) to visualize semantic drift.
+* **`anomaly_collector.py`** — An automated audit tool. It processes text chunks, calculates semantic distance, and if the distance exceeds a defined threshold, it saves the "anomaly" (the before and after context) into the `REJECTED_BUT_ACTIVE` folder for further review.
 
 ## Outputs
 
-The `SCHEMES/` folder contains the generated plots. Here is the visual validation:
-
-![Semantic Drift Stabilization](Snapshot_1.png)
-
-`Snapshot_1.png` demonstrates the semantic stabilization on a real, emotionally charged dialogue (vector space).
+* **`SCHEMES/Snapshot_1.png`** — Visual validation of semantic stabilization on a real, emotionally charged dialogue (vector space).
+* **`REJECTED_BUT_ACTIVE/`** — This folder contains samples of detected semantic anomalies. The files show the exact moment of a semantic jump (Distance metric) and the text before/after the shift.
 
 ## Origin
 
