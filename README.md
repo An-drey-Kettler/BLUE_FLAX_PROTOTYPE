@@ -4,14 +4,15 @@ This directory contains the working codebase for the Semantic Drift stabilizatio
 
 ## Modules
 
-* **`vector_stabilizer.py`** — The core empirical analyzer. It reads a text file, converts chunks into 384-dimensional vector embeddings (via `sentence-transformers`), calculates semantic entropy (cosine distance between vectors), and applies a stabilization filter (EMA + Tanh-saturation) to visualize semantic drift.
-* **`anomaly_collector.py`** — An automated audit tool. It processes text chunks, calculates semantic distance, and if the distance exceeds a defined threshold, it saves the "anomaly" (the before and after context) into the `REJECTED_BUT_ACTIVE` folder for further review.
+* **`vector_stabilizer_v3.py`** — The core empirical analyzer (latest version). It performs smart sentence-aligned chunking, converts text into 384-dimensional vector embeddings (via `sentence-transformers`), and calculates two metrics: step entropy (instant semantic jumps) and attractor drift (deviation from the dialogue's moving center of gravity). It applies a calibrated stabilization filter (EMA + Tanh-saturation) to visualize semantic rhythm.
+* **`vector_stabilizer.py`** — (Deprecated) The initial vector-space analyzer without attractor drift tracking.
+* **`anomaly_collector.py`** — An automated audit tool. It processes text chunks, calculates semantic distance, and if the distance exceeds a defined threshold, it saves the "anomaly" into the `REJECTED_BUT_ACTIVE` folder.
 
 ## Outputs
 
-* **SCHEMES/Snapshot_1.png** — Visual validation of semantic stabilization on a real, emotionally charged dialogue (vector space).
-* ![Semantic Drift Stabilization](Snapshot_1.png)
-* **`REJECTED_BUT_ACTIVE/`** — This folder contains samples of detected semantic anomalies. The files show the exact moment of a semantic jump (Distance metric) and the text before/after the shift.
+* **`SCHEMES/Snapshot_1.png`** — Visual validation of semantic stabilization on a real, emotionally charged dialogue (vector space).
+* **`REJECTED_BUT_ACTIVE/`** — This folder contains samples of raw semantic anomalies (moments where the distance exceeded the threshold).
+* **`PHASE_EVENTS/`** — This folder contains classified phase events exported by v3. It distinguishes between `RESONANT_LEAP` (a deep semantic shift within the context) and `AXIS_DRIFT` (a breakdown or loss of context).
 
 ## Origin
 
