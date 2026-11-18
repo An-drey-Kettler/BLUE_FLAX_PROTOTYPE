@@ -27,6 +27,8 @@ cd BLUE_FLAX_PROTOTYPE
 pip install -r requirements.txt
 python vector_stabilizer_v3.py
 ```
+> **Note:** Ensure `test_text.txt` (encoded in UTF-8) is present in the root directory prior to execution.
+
 ## Origin
 
 This prototype is based on the conceptual architecture developed in the "SR-NESS-STABILIZER-2026" framework and the "PHASE_LOCK_ARGO" materials. It represents an independent, working implementation of those ideas, designed to operate purely on local hardware (no cloud dependencies).
