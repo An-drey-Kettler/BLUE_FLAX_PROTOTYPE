@@ -6,6 +6,7 @@ This directory contains the working codebase for the Semantic Drift stabilizatio
 
 * **`vector_stabilizer_v3.py`** — The core empirical analyzer (latest version). It performs smart sentence-aligned chunking, converts text into 384-dimensional vector embeddings (via `sentence-transformers`), and calculates two metrics: step entropy (instant semantic jumps) and attractor drift (deviation from the dialogue's moving center of gravity). It applies a calibrated stabilization filter (EMA + Tanh-saturation) to visualize semantic rhythm.
 * **`live_monitor.py`** — The real-time stream analyzer. It reads text line-by-line, calculates the semantic distance between consecutive lines, and immediately flags anomalies (semantic jumps) if the distance exceeds a defined threshold. This is a prototype for a live "cognitive guard" for LLM interactions.
+* **`live_monitor_sprung.py`** — (Version 4.1) The improved real-time stream analyzer. It includes a formatting noise filter (`is_noise_line`), which skips separator lines (e.g., `===`, `---`) and lines without alphanumeric characters. This prevents false positive anomalies caused by document formatting and ensures the analyzer reacts only to actual semantic shifts in the text.
 * **`vector_stabilizer.py`** — (Deprecated) The initial vector-space analyzer without attractor drift tracking.
 * **`anomaly_collector.py`** — An automated audit tool. It processes text chunks, calculates semantic distance, and if the distance exceeds a defined threshold, it saves the "anomaly" into the `REJECTED_BUT_ACTIVE` folder.
 
