@@ -39,4 +39,4 @@ Authors: Andrey Kettler (Human, Operator) & SAINT (SAINT — endonym of the AI p
 
 ## Contact & Collaboration
 
-sphyrna.zyg [at] mail [dot] ru
+sphyrna.zyg  [at]  mail  [dot]  ru
