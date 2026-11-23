@@ -4,6 +4,8 @@ This directory contains the working codebase for the Semantic Drift stabilizatio
 
 ## Modules
 
+* **vector_stabilizer_v4_vmf.py** — The minimal Active Inference prototype on the 384-dimensional unit hypersphere ($S^{383}$). It models semantic trajectories using a von Mises–Fisher (vMF) distribution centered on the running mean direction, estimates concentration (precision $\kappa$) online via Banerjee's high-dimensional approximation, and computes Precision-Weighted Prediction Error (`PWPE = κ · Drift`) as surprisal. Significant phase transitions ($Z \ge 2.0$) are exported to `PHASE_EVENTS/vmf_active_inference_report.txt`.
+
 * **`vector_stabilizer_v3.py`** — The core empirical analyzer (latest version). It performs smart sentence-aligned chunking, converts text into 384-dimensional vector embeddings (via `sentence-transformers`), and calculates two metrics: step entropy (instant semantic jumps) and attractor drift (deviation from the dialogue's moving center of gravity). It applies a calibrated stabilization filter (EMA + Tanh-saturation) to visualize semantic rhythm.
 * **`live_monitor.py`** — The real-time stream analyzer. It reads text line-by-line, calculates the semantic distance between consecutive lines, and immediately flags anomalies (semantic jumps) if the distance exceeds a defined threshold. This is a prototype for a live "cognitive guard" for LLM interactions.
 * **`live_monitor_sprung.py`** — (Version 4.1) The improved real-time stream analyzer. It includes a formatting noise filter (`is_noise_line`), which skips separator lines (e.g., `===`, `---`) and lines without alphanumeric characters. This prevents false positive anomalies caused by document formatting and ensures the analyzer reacts only to actual semantic shifts in the text.
