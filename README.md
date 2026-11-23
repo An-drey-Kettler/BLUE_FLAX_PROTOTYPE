@@ -24,6 +24,11 @@ This directory contains the working codebase for the Semantic Drift stabilizatio
 * **`REJECTED_BUT_ACTIVE/`** — This folder contains samples of raw semantic anomalies (moments where the distance exceeded the threshold).
 * **`PHASE_EVENTS/`** — This folder contains classified phase events exported by v3. It distinguishes between `RESONANT_LEAP` (a deep semantic shift within the context) and `AXIS_DRIFT` (a breakdown or loss of context).
 
+## Validation Statistics
+- Welch t-test: t = 25.09, p < 10⁻⁸
+- Cohen's d: 1.99 (at alpha_max = 0.45); conservative estimate d = 0.87 used in the report.
+- Run `validation_stats.py` to reproduce these numbers from your own data.
+
 ## Quick Start
 
 To initialize the local vector-space environment and execute the stabilization analyzers, clone the archive, create a virtual environment, and install the required dependencies:
