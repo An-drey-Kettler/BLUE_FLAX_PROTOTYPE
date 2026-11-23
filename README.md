@@ -28,15 +28,26 @@ This directory contains the working codebase for the Semantic Drift stabilizatio
 
 ## Quick Start
 
-To initialize the local vector-space environment and execute the primary stabilization analyzer, clone the archive and install the required dependencies:
+## Quick Start
+
+To initialize the local vector-space environment and execute the stabilization analyzers, clone the archive, create a virtual environment, and install the required dependencies:
 
 ```bash
 git clone https://github.com/An-drey-Kettler/BLUE_FLAX_PROTOTYPE.git
 cd BLUE_FLAX_PROTOTYPE
+python3 -m venv venv
+source venv/bin/activate
+pip install torch --index-url https://pytorch.org
 pip install -r requirements.txt
+
+# Run the von Mises–Fisher Active Inference prototype (v4)
+python vector_stabilizer_v4_vmf.py
+
+# Or run the EMA + Tanh stabilization analyzer (v3)
 python vector_stabilizer_v3.py
 ```
-> **Note:** Ensure `test_text.txt` (encoded in UTF-8) is present in the root directory prior to execution.
+
+**Note:** Ensure `test_text.txt` (encoded in UTF-8) is present in the root directory prior to execution.
 
 ## Origin
 
