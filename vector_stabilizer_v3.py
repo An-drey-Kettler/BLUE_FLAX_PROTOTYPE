@@ -86,46 +86,52 @@ def stabilize_signal(signal, beta=0.8, alpha_max=0.45):
     return smoothed, stabilized
 
 
-def export_phase_events(chunks, step_entropy, attractor_drift, 
-                        step_threshold=0.38, axis_threshold=0.42, 
+def export_phase_events(chunks, stab_step, stab_attractor, 
+                        step_threshold=0.38, axis_threshold=0.36, 
                         output_dir="PHASE_EVENTS"):
     """
-    Селективный фильтр событий: разделяет аномалии на
-    1. RESONANT_LEAP (глубокий поворот мысли при сохранении общей оси)
-    2. AXIS_DRIFT (срыв с частоты / уход от цели диалога)
+    Селективный фильтр событий по стабилизированному сигналу:
+    собирает единый сгруппированный отчёт в одном файле.
     """
     os.makedirs(output_dir, exist_ok=True)
-    events_found = 0
+    groups = {"AXIS_DRIFT": [], "RESONANT_LEAP": []}
 
     for i in range(1, len(chunks)):
-        s_jump = step_entropy[i]
-        a_drift = attractor_drift[i]
+        s_jump = stab_step[i]
+        a_drift = stab_attractor[i]
 
-        event_type = None
         if a_drift >= axis_threshold:
-            event_type = "AXIS_DRIFT"      # Срыв с оси (потеря резонанса / шум)
+            groups["AXIS_DRIFT"].append((i, s_jump, a_drift))
         elif s_jump >= step_threshold:
-            event_type = "RESONANT_LEAP"   # Глубокий инсайт (скачок внутри темы)
+            groups["RESONANT_LEAP"].append((i, s_jump, a_drift))
 
-        if event_type:
-            events_found += 1
-            filename = os.path.join(output_dir, f"event_{i:03d}_{event_type}.txt")
-            with open(filename, "w", encoding="utf-8") as f:
-                f.write(f"=== PHASE EVENT #{i:03d} [{event_type}] ===\n")
-                f.write(f"Step Jump (Instant Impulse): {s_jump:.4f} (threshold: {step_threshold})\n")
-                f.write(f"Attractor Drift (Axis Dev):  {a_drift:.4f} (threshold: {axis_threshold})\n")
-                f.write("-" * 60 + "\n\n")
-                f.write("PREVIOUS CHUNK (Context):\n")
-                f.write(chunks[i - 1] + "\n\n")
-                f.write("TRIGGER CHUNK (Phase Shift):\n")
-                f.write(chunks[i] + "\n")
+    total = len(groups["AXIS_DRIFT"]) + len(groups["RESONANT_LEAP"])
+    report_path = os.path.join(output_dir, "phase_events_report.txt")
 
-    print(f"[*] Exported {events_found} phase events into './{output_dir}/'")
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write("=== PHASE EVENTS GROUPED REPORT (STABILIZED SIGNAL) ===\n")
+        f.write(f"Total Events: {total} | AXIS_DRIFT: {len(groups['AXIS_DRIFT'])} | RESONANT_LEAP: {len(groups['RESONANT_LEAP'])}\n")
+        f.write(f"Thresholds -> Step Jump: {step_threshold} | Attractor Drift: {axis_threshold}\n")
+        f.write("=" * 65 + "\n\n")
+
+        for group_name in ["AXIS_DRIFT", "RESONANT_LEAP"]:
+            events = groups[group_name]
+            f.write(f"### GROUP: {group_name} ({len(events)} events) ###\n")
+            f.write("-" * 65 + "\n")
+            if not events:
+                f.write("No events detected in this category.\n\n")
+                continue
+            for idx, s_jump, a_drift in events:
+                f.write(f"[Event #{idx:03d}] Step: {s_jump:.4f} | Drift: {a_drift:.4f}\n")
+                f.write(f"  CONTEXT: {chunks[idx - 1]}\n")
+                f.write(f"  TRIGGER: {chunks[idx]}\n\n")
+
+    print(f"[*] Exported {total} grouped phase events into '{report_path}'")
 
 
 def process_text_vector_space(filename, max_chars=350, alpha_max=0.45):
     print("[*] Loading embedding model...")
-    model = SentenceTransformer('all-MiniLM-L6-v2')
+    model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
 
     print(f"[*] Reading and smart-chunking {filename}...")
     with open(filename, 'r', encoding='utf-8') as f:
@@ -149,7 +155,7 @@ def process_text_vector_space(filename, max_chars=350, alpha_max=0.45):
     _, stab_attractor = stabilize_signal(attractor_drift, beta=0.85, alpha_max=alpha_max)
 
     # Экспорт событий фазового перехода
-    export_phase_events(chunks, step_entropy, attractor_drift)
+    export_phase_events(chunks, stab_step, stab_attractor)
 
     # Визуализация
     t = np.arange(len(step_entropy))

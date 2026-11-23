@@ -1,5 +1,6 @@
-numpy>=1.21.0
-matplotlib>=3.5.0
-scikit-learn>=1.0.0
-sentence-transformers>=2.2.0
-torch>=2.0.0
+torch
+sentence-transformers>=3.0.0
+numpy
+scipy
+scikit-learn
+matplotlib

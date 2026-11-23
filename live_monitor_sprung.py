@@ -3,10 +3,11 @@ import time
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
+from context_classifier import classify_context  # <-- Импортируем наш классификатор
 
 # Настройки
-THRESHOLD = 0.45  # Порог скачка (подобран эмпирически)
-MODEL_NAME = 'all-MiniLM-L6-v2'
+THRESHOLD = 0.45  # Порог скачка
+MODEL_NAME = 'paraphrase-multilingual-MiniLM-L12-v2'
 
 def is_noise_line(line):
     """
@@ -26,7 +27,7 @@ def main():
     print("[*] Loading model...")
     model = SentenceTransformer(MODEL_NAME)
     
-    print("[*] Live Monitor v4.1 (live_monitor_sprung.py) initialized. Waiting for stream...")
+    print("[*] Live Monitor v5.1 (integrated with Context Classifier) initialized. Waiting for stream...")
     print("[*] Simulation: reading from 'test_text.txt' line by line.\n")
     
     previous_embedding = None
@@ -49,11 +50,15 @@ def main():
                     sim = cosine_similarity([previous_embedding], [current_embedding])[0][0]
                     distance = 1.0 - sim
                     
-                    status = "OK"
                     if distance > THRESHOLD:
-                        status = "!! ANOMALY DETECTED !!"
-                    
-                    print(f"[{status}] Distance: {distance:.4f} | Text: {line[:50]}...")
+                        # --- ИНТЕГРАЦИЯ КЛАССИФИКАТОРА ---
+                        diagnosis = classify_context(line)
+                        status = f"!! ANOMALY: {diagnosis['class']} !!"
+                        reason = diagnosis['reason']
+                        print(f"[{status}] Distance: {distance:.4f} | Text: {line[:50]}...")
+                        print(f"   -> Reason: {reason}")
+                    else:
+                        print(f"[OK] Distance: {distance:.4f} | Text: {line[:50]}...")
                 
                 previous_embedding = current_embedding
                 time.sleep(0.5)

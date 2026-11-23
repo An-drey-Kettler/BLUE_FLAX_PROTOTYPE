@@ -20,7 +20,7 @@ def calculate_semantic_distance(vec1, vec2):
 
 def process_anomalies(filename):
     print("[*] Загрузка модели...")
-    model = SentenceTransformer('all-MiniLM-L6-v2')
+    model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
     
     print(f"[*] Чтение {filename}...")
     with open(filename, 'r', encoding='utf-8') as f:
