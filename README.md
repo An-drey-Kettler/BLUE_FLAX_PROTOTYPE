@@ -50,6 +50,13 @@ python vector_stabilizer_v3.py
 
 **Note:** Ensure `test_text.txt` (encoded in UTF-8) is present in the root directory prior to execution.
 
+## Addendum (25.11.2026)
+
+Re-verification of claims in Letter #03 to Daniel Friedman (Active Inference Institute).
+Permutation baseline corrected: **0.5182 ± 0.0023**, p = 0.0000 (3 seeds).
+**12 stable transitions** (2 warm-up artifacts excluded). Three manually validated examples.
+Full text: [ADDENDUM.md](ADDENDUM.md)
+
 ## Origin
 
 This prototype is based on the conceptual architecture developed in the "SR-NESS-STABILIZER-2026" framework and the "PHASE_LOCK_ARGO" materials. It represents an independent, working implementation of those ideas, designed to operate purely on local hardware (no cloud dependencies).
