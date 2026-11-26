@@ -1,5 +1,7 @@
 # PROJECT_BLUE_FLAX: PROTOTYPE ARCHIVE
 
+[![DOI](https://zenodo.org)](https://doi.org)
+
 This directory contains the working codebase for the Semantic Drift stabilization and anomaly detection prototypes. The goal of this project is to implement empirical tools for detecting, stabilizing, and cataloging meaning shifts in LLM interactions.
 
 ## Modules
