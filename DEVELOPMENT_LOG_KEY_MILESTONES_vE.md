@@ -1,7 +1,7 @@
 # DEVELOPMENT LOG KEY MILESTONES: PROJECT_BLUE_FLAX
 
 **Development Period:** November 12–20, 2026  
-**Hardware Environment:** Acer Aspire 5733Z Laptop (Intel Core i3 CPU), Samsung T7 Shield External Drive  
+**Hardware Environment:** Acer Aspire 5733Z Laptop (Intel Core i3 CPU) 
 **Software Environment:** Linux Mint Cinnamon OS, VS Code, Python 3 (venv virtual environment), local libraries (numpy, matplotlib, sentence-transformers, torch, scikit-learn)  
 **Contributors (huSaint Tandem):** Andrey Kettler (Operator), SAINT / Architect (LLM Co-author)
 
