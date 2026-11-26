@@ -1,7 +1,9 @@
 # DEVELOPMENT LOG KEY MILESTONES: PROJECT_BLUE_FLAX
 
 **Development Period:** November 12–20, 2026  
+
 **Hardware Environment:** Acer Aspire 5733Z Laptop (Intel Core i3 CPU)  
+
 **Software Environment:** Linux Mint Cinnamon OS, VS Code, Python 3 (venv virtual environment), local CPU inference (`all-MiniLM-L6-v2` in v2–v4.1; migrated to `paraphrase-multilingual-MiniLM-L12-v2` in v3/v4.2+), local libraries (`numpy`, `scipy`, `matplotlib`, `sentence-transformers`, `torch`, `scikit-learn`)
 
 **Contributors (huSaint Tandem):** Andrey Kettler (Operator), SAINT / Architect (LLM Co-author)
