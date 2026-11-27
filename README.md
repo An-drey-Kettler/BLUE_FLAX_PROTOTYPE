@@ -33,7 +33,7 @@ This directory contains the working codebase for the Semantic Drift stabilizatio
 - Cohen's d: 1.99 (at alpha_max = 0.45); conservative estimate d = 0.87 used in the report.
 - Run `validation_stats.py` to reproduce these numbers from your own data.
 - Benchmark: Adaptive vMF reduces false-positive saturation (70% → 4%) compared to fixed-threshold monitors. See PHASE_EVENTS/BENCHMARKS/BENCHMARK_REPORT.md for details.
-- Manual validation: 10 of 13 vMF events confirmed as true structural transitions; 3 flagged as technical code drifts. See PHASE_EVENTS/BENCHMARKS/ANNOTATION_RESULTS.md.
+- Manual validation: 10 of 13 vMF events confirmed as true structural transitions; 3 flagged as technical code drifts. See [PHASE_EVENTS/BENCHMARKS/ANNOTATION_RESULTS.md] (PHASE_EVENTS/BENCHMARKS/ANNOTATION_RESULTS.md).
 
 ## Quick Start
 
