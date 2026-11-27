@@ -29,5 +29,5 @@ The sampled background chunks (e.g., BG 021, BG 041, BG 103) represent coherent 
 The adaptive vMF monitor demonstrates high operational precision (10/13 true semantic events). The 3 "false positives" are mathematically explainable as technical transitions within code blocks, not semantic noise. This confirms the viability of using precision-weighted prediction error for real-time semantic monitoring on edge hardware.
 
 ---
-*Full raw data: `ANNOTATION_DATA.txt` in this directory.*
+*Full raw data: `ANNOTATION_DATA.md` in this directory: [PHASE_EVENTS/BENCHMARKS/ANNOTATION_DATA.md](PHASE_EVENTS/BENCHMARKS/ANNOTATION_DATA.md)*
 
