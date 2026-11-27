@@ -15,7 +15,7 @@ This directory contains the working codebase for the Semantic Drift stabilizatio
 * **`context_classifier.py`** — (Version 5) An explainable heuristic classifier for text fragments. It analyzes chunks of text and assigns them to one of four classes: `HALLUCINATED_ACTION` (model claims an action without technical evidence), `RESONANT_LEAP` (genuine analytical/insightful shift), `NOISE` (formatting or too short), or `NEUTRAL` (normal context). Each classification is accompanied by a human-readable explanation of the decision logic.
 * **`vector_stabilizer.py`** — (Deprecated) The initial vector-space analyzer without attractor drift tracking.
 * **`anomaly_collector.py`** — An automated audit tool. It processes text chunks, calculates semantic distance, and if the distance exceeds a defined threshold, it saves the "anomaly" into the `REJECTED_BUT_ACTIVE` folder.
-* - TECHNICAL_NOTE_vMF.md — Concise mathematical overview and benchmark for external reviewers.
+* TECHNICAL_NOTE_vMF.md — Concise mathematical overview and benchmark for external reviewers.
 
 ## Outputs
 
