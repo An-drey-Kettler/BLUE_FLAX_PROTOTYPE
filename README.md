@@ -31,6 +31,7 @@ This directory contains the working codebase for the Semantic Drift stabilizatio
 - Welch t-test: t = 25.09, p < 10⁻⁸
 - Cohen's d: 1.99 (at alpha_max = 0.45); conservative estimate d = 0.87 used in the report.
 - Run `validation_stats.py` to reproduce these numbers from your own data.
+- Benchmark: Adaptive vMF reduces false-positive saturation (70% → 4%) compared to fixed-threshold monitors. See PHASE_EVENTS/BENCHMARKS/BENCHMARK_REPORT.md for details.
 
 ## Quick Start
 
