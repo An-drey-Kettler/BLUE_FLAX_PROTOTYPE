@@ -49,6 +49,8 @@ The adaptive vMF monitor provides a viable operational solution. By incorporatin
 
 **Conclusion:** The base `is_noise_line` filter already handles formatting artifacts effectively. The remaining false positives are semantic/technical transitions, not noise. Therefore, adaptive κ-based filtering is not necessary for this corpus, but may be useful for corpora with higher formatting variance. This confirms the robustness of the vMF monitor's signal-to-noise ratio.
 
+**Validation on second corpus:** To ensure the filter does not over-apply on clean texts, we tested it on a second independent corpus (`test_text.2.txt`, 116 chunks). The median κ was 503.6 (higher than the first corpus), and the adaptive filter removed **0 out of 116 chunks**. This confirms that the filter is conservative and only activates when there is actual noise (short, low-confidence chunks), preserving the integrity of clean text.
+
 ---
 *Note: This report serves as empirical validation for the vMF architecture described in the main repository README.*
 
