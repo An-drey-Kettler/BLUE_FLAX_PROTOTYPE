@@ -70,3 +70,5 @@ if __name__ == "__main__":
     for idx in indices[:10]:
         print(f"    Chunk {idx:03d}: {chunks[idx][:60]}...")
 
+# (Version 2) For full noise filtering analysis, see BENCHMARK_REPORT.md, Section 5.
+
